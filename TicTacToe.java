@@ -136,19 +136,18 @@ public class TicTacToe extends JFrame implements ActionListener {
 			}
 		}
 
-		if (selectedPositions == 9) {
-			JOptionPane.showMessageDialog(null, "No winner!", "Draw", JOptionPane.INFORMATION_MESSAGE);
-			clean();
-		} else if (selectedPositions >= 5) {
+		if (selectedPositions >= 5) {
 			for (int i = 0; i < VICTORY_ORDER.length; i++) {
 				int p0 = Character.getNumericValue(VICTORY_ORDER[i].charAt(0));
 				int p1 = Character.getNumericValue(VICTORY_ORDER[i].charAt(1));
 				int p2 = Character.getNumericValue(VICTORY_ORDER[i].charAt(2));
 
 				if (buttons[p0].getText() == "X" || buttons[p0].getText() == "O") {
-					if ((buttons[p0].getText() == buttons[p1].getText()
-							&& buttons[p1].getText() == buttons[p2].getText())) {
+					if ((buttons[p0].getText() == buttons[p1].getText() && buttons[p1].getText() == buttons[p2].getText())) {
 						showWinner(buttons[p0].getText());
+					} else if (selectedPositions == 9) {
+						JOptionPane.showMessageDialog(null, "No winner!", "Draw", JOptionPane.INFORMATION_MESSAGE);
+						clean();
 					}
 				}
 			}
